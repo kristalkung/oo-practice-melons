@@ -23,12 +23,12 @@ class MelonType(object):
     def add_pairing(self, pairing):
         """Add a food pairing to the instance's pairings list."""
 
-        self.pairing = [pairing]
+        self.pairings.append(pairing)
 
     def update_code(self, new_code):
         """Replace the reporting code with the new_code."""
 
-        self.new_code = new_code
+        self.code = new_code
 
 
 def make_melon_types():
@@ -36,19 +36,40 @@ def make_melon_types():
 
     all_melon_types = []
 
-    self.name = "Muskmelon"
-    self.first_harvest = "First harvest in 1998"
-    self.color = "green"
-    # self.pairings
-    self.is_seedless = "Seedless"
-    self.is_bestseller = "Bestseller"
+    melon_type_1 = MelonType("musk", "First harvest in 1988", "green", True, True, 
+                 "Muskmelon")
+    all_melon_types.append(melon_type_1)
+    melon_type_1.add_pairing("mint")
+
+    melon_type_2 = MelonType("cas", "First harvest in 2003", "orange", False, False, 
+                 "Casaba")
+    all_melon_types.append(melon_type_2)
+    melon_type_2.add_pairing("mint")
+    melon_type_2.add_pairing("strawberries")
+
+    melon_type_3 = MelonType("cren", "First harvest in 1996", "green", False, False, 
+                 "Crenshaw")
+    all_melon_types.append(melon_type_3)
+    melon_type_3.add_pairing("proscuitto")
+
+    melon_type_4 = MelonType("yw", "First harvest in 2013", "yellow", False, True, 
+                 "Yellow Watermelon")
+    all_melon_types.append(melon_type_4)
+    melon_type_4.add_pairing("ice cream")
 
     return all_melon_types
 
 def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
+    melon_types = make_melon_types()
 
-    # Fill in the rest
+    for melon in melon_types:
+        print(f'{melon.name} pairs with')
+        for pairing in melon.pairings:
+            print(f'- {pairing}')
+        print("")
+
+print_pairing_info(make_melon_types)
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
