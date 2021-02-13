@@ -69,12 +69,19 @@ def print_pairing_info(melon_types):
             print(f'- {pairing}')
         print("")
 
-print_pairing_info(make_melon_types)
+# print_pairing_info(make_melon_types)
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
+    melon_types = make_melon_types()
+    melon_dict = {}
 
-    # Fill in the rest
+    for melon in melon_types:
+        melon_dict[melon.code] = melon
+    
+    return melon_dict
+
+print(make_melon_type_lookup(make_melon_types))
 
 ############
 # Part 2   #
@@ -85,6 +92,8 @@ class Melon(object):
 
     # Fill in the rest
     # Needs __init__ and is_sellable methods
+
+    def __init__(self, melon_type)
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
